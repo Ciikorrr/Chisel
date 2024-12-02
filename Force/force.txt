@@ -48,6 +48,8 @@ jediknight       (vader)
 Use the "--show" option to display all of the cracked passwords reliably
 Session completed.
 
+ssh-keygen
+
 -----BEGIN RSA PRIVATE KEY-----
 MIIEpAIBAAKCAQEAwafsaaB69NLIolWOsiLnfzvjBMOH5R2PCQVM20VwID2dmEz3
 sFFu+n5z0RoUjmfVSCTFs/mS7f6q88FsQWZIAD1hsYFujcoagVWPhBWTvTqysz8k
@@ -99,3 +101,5 @@ got a shell as root
 cd /root/
 
 cat root.txt : 
+
+forgot to write the flag

