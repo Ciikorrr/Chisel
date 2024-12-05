@@ -1,9 +1,22 @@
 Silence
 
+Enumerate the website. Find /hidden with gobuster to download stats.zip
 /hidden folder with feroxbuster
+
+Unzip the file and find a gpg encrypted file + the secret gpg key. Add the key to decrypt ClimberStats.xlsx
 
 adam:bibliographieSeemsTough2022
 magnus:youtubeIsClimbingToo
 janja:theClimbingMonster
 
+Bruteforce ftp with hydra. Put a revshell in the ftp Reverse shell to the machine using the website
 
+Su to magnus because of password reuse.  Forward port 2049 to localhost. 
+
+su magnus : youtubeIsClimbingToo
+
+Find nfs /share is setup locally.
+
+Mount the /share.
+
+Exploit the no-root-squash method by putting a 7777 root bash into the mounted dir
